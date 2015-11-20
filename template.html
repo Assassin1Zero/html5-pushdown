@@ -1,0 +1,90 @@
+<!--nosandbox-->
+<!-- DO NOT EDIT OR REMOVE THIS CODE BLOCK -->
+<script>
+<!--LIB-->
+</script>
+
+<!-- YOU CAN INCLUDE ANY STYLES HERE -->
+<style>
+    body {
+        padding: 0;
+        margin: 0;
+    }
+
+    .ad-close {
+        height: 32px;
+        width: 32px;
+        display: block;
+        text-decoration: none;
+        position: absolute;
+        z-index: 2;
+        cursor: pointer;
+        top: 0px;
+        right: 0;
+        background: url(http://discoveryint1.edgeboss.net/download/discoveryint1/ads/close-button.png) 0px 0px no-repeat;
+    }
+</style>
+
+<!-- YOUR HTML CONTENT SHOULD BE PLACED INSIDE THIS DIV, DO NOT REMOVE -->
+<div id="stage">
+
+    <!-- This is just an example it can be removed or edited as necessary -->
+
+    <!-- CLOSE BUTTON MUST ALWAYS HAVE THE CLASS .ad-close -->
+    <a href="#" class="ad-close"></a>
+
+    <!-- CLICKABLE ELEMENTS MUST ALWAYS HAVE THE CLASS .ad-click -->
+    <div id="contracted-content" class="ad-click">
+        <!-- 970x90 content here -->
+        <img src="http://hpc.deskeng.com/wp-content/uploads/2015/04/Intel_SuperLeader_970x90.gif" width="970" height="90" />
+    </div>
+
+    <div id="expanded-content" class="ad-click">
+        <!-- 970x250 content here -->
+        <img src="http://hpc.deskeng.com/wp-content/uploads/2015/04/Intel_Billboard_970x250_2.jpg" width="970" height="250" />
+    </div>
+
+</div>
+
+<!-- YOU CAN INCLUDE ANY CUSTOM SCRIPTS OR CODE HERE -->
+<script>
+//Example custom user function to open ad
+function adOpen() {
+    document.getElementById('expanded-content').style.display = 'block';
+    document.getElementById('contracted-content').style.display = 'none';
+}
+//Example custom user function to close ad
+function adClose() {
+    document.getElementById('expanded-content').style.display = 'none';
+    document.getElementById('contracted-content').style.display = 'block';
+}
+</script>
+
+
+<!-- EXAMPLE USAGE OF THE PUSHDOWN API. THIS IS REQUIRED TO ENABLE FUNCTIONALITY WHEN AD SERVED -->
+<script>
+
+    //Create a new pushdown instance
+    var pushdown = AdOps.pushdown({clickUrl: 'http://www.test.com'});
+
+    //Listen for the pushdown to dispatch the ready event and setup your ads initial state
+    pushdown.addEvent('ADOPS_PUSHDOWN_READY', function() {
+        //Call customer user function
+        adOpen();
+    });
+
+    //Listen for the pushdown to dispatch the closed event and show/hide the appropriate content
+    pushdown.addEvent('ADOPS_PUSHDOWN_CLOSED', function() {
+        //Call customer user function
+        adClose();
+    });
+
+    pushdown.addEvent('ADOPS_PUSHDOWN_OPENED', function() {
+        //Call customer user function
+        adOpen();
+    });
+
+    //Initialise the pushdown
+    pushdown.init();
+
+</script>
