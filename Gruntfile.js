@@ -27,7 +27,7 @@ module.exports = function(grunt) {
         	build: {
         		files: [
         			{src: 'template.html', dest: 'build/template.html'},
-                    {src: 'testpage.html', dest: 'build/testpage.html'},
+                    {src: 'test-pushdown.js', dest: 'build/test-pushdown.js'},
                     {src: 'css/**', dest: 'build/css'},
                     {src: 'js/**', dest: 'build/js'},
                     {src: 'images/**', dest: 'build/images'},
