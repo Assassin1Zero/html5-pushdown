@@ -12,6 +12,10 @@ http.createServer(function (req, res) {
     if (req.url === '/template.html') {
 
         res.end(fs.readFileSync('./template.html', 'utf8'));
+
+    } else if (req.url.match(/\/images\/.*/)) {
+
+    	res.end(fs.readFileSync('.' + req.url));
     } else {
         res.end('<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>TEST PAGE</title></head><body><iframe id="frame" src="template.html" seamless="yes" scrolling="no" style="border: none;" height="250" width="970"></iframe><p>This is a test page</p></body></html>');
     }
