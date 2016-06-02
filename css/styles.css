@@ -1,0 +1,42 @@
+body {
+	padding: 0;
+	margin: 0;
+}
+
+.ad-click {
+	cursor: pointer;
+	z-index: 0;
+	position: relative;
+}
+
+.ad-close {
+	height: 32px;
+	width: 32px;
+	display: block;
+	text-decoration: none;
+	position: absolute;
+	z-index: 3;
+	cursor: pointer;
+	top: 0px;
+	right: 0;
+	background: url(http://discoveryint1.edgeboss.net/download/discoveryint1/ads/close-button.png) 0px 0px no-repeat;
+}
+
+#Pushdown_Closed {
+	background: url(../images/background-970x90.jpg);
+	width: 970px;
+	height: 90px;
+}
+
+#Pushdown_Opened {
+	background: url(../images/background-970x250.jpg);
+	width: 970px;
+	height: 250px;
+}
+
+#video-wrapper {
+	position: absolute;
+	z-index: 2;
+	left: 560px;
+	top: 10px;
+}

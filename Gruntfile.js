@@ -20,42 +20,51 @@ module.exports = function(grunt) {
                 src: ['build']
             },
             post: {
-                src: ['build/temp']
+                src: ['build/main.js']
             }
         },
         copy: {
-        	build: {
-        		files: [
-        			{src: 'template.html', dest: 'build/template.html'},
-                    {src: 'test-pushdown.js', dest: 'build/test-pushdown.js'},
-                    {src: 'css/**', dest: 'build/css'},
-                    {src: 'js/**', dest: 'build/js'},
-                    {src: 'images/**', dest: 'build/images'},
-        		],
-                options: {
-                    process: function(c, s) {
-
-                         if (/template.html/.test(s)) {
-
-                             var script = fs.readFileSync('./build/temp/main.min.js', 'utf8');
-
-                             c = c.replace(/<!--LIB-->/gm, script);
-                         }
-                         return c;
-                    }
-                }
-        	}
+            build: {
+                files: [{
+                    src: 'template.html',
+                    dest: 'build/index.html'
+                }, {
+                    expand: true,
+                    src: 'css/**',
+                    dest: 'build/',
+                    flatten: true,
+                    filter: 'isFile'
+                }, {
+                    expand: true,
+                    src: 'js/**',
+                    dest: 'build/',
+                    flatten: true,
+                    filter: 'isFile'
+                }, {
+                    expand: true,
+                    src: 'images/**',
+                    dest: 'build/',
+                    flatten: true,
+                    filter: 'isFile'
+                }, {
+                    expand: true,
+                    src: 'media/**',
+                    dest: 'build/',
+                    flatten: true,
+                    filter: 'isFile'
+                }]
+            }
         },
         uglify: {
             build: {
-                src: 'build/temp/main.js',
-                dest: 'build/temp/main.min.js'
+                src: 'build/main.js',
+                dest: 'build/main.min.js'
             }
         },
         browserify: {
             build: {
                 files: {
-                    'build/temp/main.js': ['lib/**/*.js']
+                    'build/main.js': ['lib/**/*.js']
                 },
                 options: {
                     require: ['ad-utils'],
@@ -71,5 +80,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
 
     // Default task.
-    grunt.registerTask('default', ['clean:pre', 'browserify', 'uglify','copy', 'clean:post']);
+    grunt.registerTask('default', ['clean:pre', 'browserify', 'uglify', 'copy', 'clean:post']);
 };
