@@ -1,4 +1,4 @@
-var fs = require('fs');
+'use strict';
 
 module.exports = function(grunt) {
 
@@ -20,36 +20,36 @@ module.exports = function(grunt) {
                 src: ['build']
             },
             post: {
-                src: ['build/main.js']
+                src: ['build/html5-pushdown/main.js']
             }
         },
         copy: {
             build: {
                 files: [{
                     src: 'template.html',
-                    dest: 'build/index.html'
+                    dest: 'build/html5-pushdown/index.html'
                 }, {
                     expand: true,
                     src: 'css/**',
-                    dest: 'build/',
+                    dest: 'build/html5-pushdown/',
                     flatten: true,
                     filter: 'isFile'
                 }, {
                     expand: true,
                     src: 'js/**',
-                    dest: 'build/',
+                    dest: 'build/html5-pushdown/',
                     flatten: true,
                     filter: 'isFile'
                 }, {
                     expand: true,
                     src: 'images/**',
-                    dest: 'build/',
+                    dest: 'build/html5-pushdown/',
                     flatten: true,
                     filter: 'isFile'
                 }, {
                     expand: true,
                     src: 'media/**',
-                    dest: 'build/',
+                    dest: 'build/html5-pushdown/',
                     flatten: true,
                     filter: 'isFile'
                 }]
@@ -57,19 +57,24 @@ module.exports = function(grunt) {
         },
         uglify: {
             build: {
-                src: 'build/main.js',
-                dest: 'build/main.min.js'
+                src: 'build/html5-pushdown/main.js',
+                dest: 'build/html5-pushdown/main.min.js'
             }
         },
         browserify: {
             build: {
                 files: {
-                    'build/main.js': ['lib/**/*.js']
+                    'build/html5-pushdown/main.js': ['lib/pushdown.js'],
+                    'build/enabler.js': ['lib/enabler.js']
                 },
-                options: {
-                    require: ['ad-utils'],
-                }
+                // options: {
+                //     require: ['ad-utils'],
+                // }
             }
+        },
+        watch: {
+            files: ['lib/**', 'css/**', 'images/**', 'js/**', 'template.html'],
+            tasks: ['default']
         }
     });
 
@@ -78,7 +83,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-browserify');
     grunt.loadNpmTasks('grunt-contrib-uglify');
-
+    grunt.loadNpmTasks('grunt-contrib-watch');
     // Default task.
     grunt.registerTask('default', ['clean:pre', 'browserify', 'uglify', 'copy', 'clean:post']);
 };

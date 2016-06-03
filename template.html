@@ -8,21 +8,36 @@
 <body>
     <div id="Pushdown_Stage">
 
-        <div id="Pushdown_Opened">
+		<!--
+			Anchor with ad-toggle class to enable open close,
+			can be further customised in styles css.
+			When ad is in a closed state class ad-closed is applied to any
+			element with the ad-toggle class. Conversely ad-opened class is
+			applied to ad-toggle elements when ad is open.
+		 -->
+		<a href="#" class="ad-toggle">&nbsp;</a>
 
+        <div id="Pushdown_Opened" class="ad-click">
+			<!-- Open state content should go here -->
+			<!-- demo image set as a background in styles.css -->
         </div>
 
-        <div id="Pushdown_Closed">
-
+        <div id="Pushdown_Closed" class="ad-click">
+			<!-- Close state content should go here -->
+			<!-- demo image set as a background in styles.css -->
         </div>
 
     </div>
+
     <script src="main.min.js"></script>
+
     <script>
         var pushdown = AdOps.pushdown({
-
+			openContainer: '#Pushdown_Opened',  //Set element with opened state content
+	        closeContainer: '#Pushdown_Closed', //Set element with closed state content
+			delay: 15000                        //Set delay in milliseconds or false to disable autoclose
         });
-        
+
         pushdown.init();
     </script>
 </body>

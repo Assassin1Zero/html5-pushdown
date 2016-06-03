@@ -1,6 +1,8 @@
 body {
 	padding: 0;
 	margin: 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	font-size: 14px;
 }
 
 .ad-click {
@@ -22,14 +24,19 @@ body {
 	background: url(http://discoveryint1.edgeboss.net/download/discoveryint1/ads/close-button.png) 0px 0px no-repeat;
 }
 
+#Pushdown_Stage {
+	max-height: 250px;
+	width: 970px;
+}
+
 #Pushdown_Closed {
-	background: url(../images/background-970x90.jpg);
+	background: url(background-970x90.jpg);
 	width: 970px;
 	height: 90px;
 }
 
 #Pushdown_Opened {
-	background: url(../images/background-970x250.jpg);
+	background: url(background-970x250.jpg);
 	width: 970px;
 	height: 250px;
 }
@@ -39,4 +46,25 @@ body {
 	z-index: 2;
 	left: 560px;
 	top: 10px;
+}
+
+.ad-toggle {
+	width: 100px;
+	display: inline-block;
+	text-decoration: none;
+	position: absolute;
+	z-index: 3;
+	cursor: pointer;
+	top: 0;
+	right: 0;
+	padding-right: 10px;
+	color: white;
+}
+
+/*.ad-opened:before {
+	content: 'Close Ad';
+}*/
+
+.ad-closed:before {
+	content: 'Open Ad';
 }
