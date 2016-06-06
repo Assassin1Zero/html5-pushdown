@@ -48,6 +48,7 @@ body {
 	top: 10px;
 }
 
+/*Toggle ad status API event class*/
 .ad-toggle {
 	width: 100px;
 	display: inline-block;
@@ -56,14 +57,14 @@ body {
 	z-index: 3;
 	cursor: pointer;
 	top: 0;
-	right: 0;
-	padding-right: 10px;
+	left: 0;
+	padding-left: 10px;
 	color: white;
 }
 
-/*.ad-opened:before {
+.ad-opened:before {
 	content: 'Close Ad';
-}*/
+}
 
 .ad-closed:before {
 	content: 'Open Ad';
