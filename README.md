@@ -46,7 +46,8 @@ pushdown.init();
 <script>
     var pushdown = AdOps.pushdown({
         src: 'http://your-cdn.com/html5-pushdown/index.html',
-        clickUrl: '#{click("defaultClick")}'
+        clickUrl: '#{click("defaultClick")}',
+        height: 250
     });
 
     pushdown.init();
